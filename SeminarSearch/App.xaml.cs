@@ -1,29 +1,20 @@
 ﻿using Xamarin.Forms;
+using SeminarSearch.Views;
+using Prism.Unity;
 
 namespace SeminarSearch
 {
-	public partial class App : Application
+	public partial class App : PrismApplication
 	{
-		public App()
+		protected override void OnInitialized()
 		{
 			InitializeComponent();
-
-			MainPage = new SeminarSearchPage();
+			this.NavigationService.NavigateAsync("MainPage");
 		}
 
-		protected override void OnStart()
+		protected override void RegisterTypes()
 		{
-			// Handle when your app starts
-		}
-
-		protected override void OnSleep()
-		{
-			// Handle when your app sleeps
-		}
-
-		protected override void OnResume()
-		{
-			// Handle when your app resumes
+			this.Container.RegisterTypeForNavigation<MainPage>();
 		}
 	}
 }
